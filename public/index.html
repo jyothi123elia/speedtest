@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpeedCheck — Internet Speed Test</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>⚡ SpeedCheck</h1>
+    <p>Test your Internet Speed — Free & Instant</p>
+  </header>
+
+  <!-- AD SLOT TOP (Google AdSense) -->
+  <div class="ad-slot" id="ad-top">
+    <!-- AdSense code goes here -->
+  </div>
+
+  <main>
+    <div class="gauge-container">
+      <div class="gauge" id="gauge">
+        <span id="speed-value">0</span>
+        <span class="unit">Mbps</span>
+      </div>
+      <p id="status-text">Ready to test</p>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <span class="label">⬇ Download</span>
+        <span class="value" id="download-result">—</span>
+        <span class="unit">Mbps</span>
+      </div>
+      <div class="result-card">
+        <span class="label">⬆ Upload</span>
+        <span class="value" id="upload-result">—</span>
+        <span class="unit">Mbps</span>
+      </div>
+      <div class="result-card">
+        <span class="label">🏓 Ping</span>
+        <span class="value" id="ping-result">—</span>
+        <span class="unit">ms</span>
+      </div>
+    </div>
+
+    <button id="start-btn" onclick="startTest()">START TEST</button>
+  </main>
+
+  <!-- AD SLOT BOTTOM -->
+  <div class="ad-slot" id="ad-bottom">
+    <!-- AdSense code goes here -->
+  </div>
+
+  <script src="speedtest.js"></script>
+</body>
+</html>
