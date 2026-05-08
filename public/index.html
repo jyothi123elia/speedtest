@@ -23,16 +23,23 @@
   </div>
 
   <main>
-    <div class="gauge-container">
-      <div class="gauge" id="gauge">
-        <span id="speed-value">0</span>
-        <span class="unit">Mbps</span>
+   <div class="gauge-container">
+      <div class="gauge-wrapper">
+        <svg class="speedometer" viewBox="0 0 200 200">
+          <circle class="gauge-bg" cx="100" cy="100" r="85"/>
+          <circle class="gauge-arc" id="gauge-arc" cx="100" cy="100" r="85"/>
+        </svg>
+        <div class="gauge-inner">
+          <span id="speed-value">0</span>
+          <span class="unit">Mbps</span>
+          <p id="status-text">Ready</p>
+          <button id="start-btn" onclick="startTest()">START</button>
+        </div>
       </div>
-      <p id="status-text">Ready to test</p>
     </div>
 
-    <div class="results-grid">
-      <div class="result-card">
+    <div class="results-grid"> 
+     <div class="result-card">
         <span class="label">⬇ Download</span>
         <span class="value" id="download-result">—</span>
         <span class="unit">Mbps</span>

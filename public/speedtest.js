@@ -1,31 +1,46 @@
+function setArc(percent) {
+  const arc = document.getElementById('gauge-arc');
+  const circumference = 534;
+  const offset = circumference - (percent / 100) * circumference;
+  arc.style.strokeDashoffset = offset;
+}
+
 async function startTest() {
   const btn = document.getElementById('start-btn');
+  const arc = document.getElementById('gauge-arc');
   btn.disabled = true;
-  btn.textContent = 'Testing...';
+  btn.textContent = '...';
+  arc.classList.add('testing');
+  setArc(0);
 
   document.getElementById('download-result').textContent = '—';
   document.getElementById('upload-result').textContent = '—';
   document.getElementById('ping-result').textContent = '—';
+  document.getElementById('speed-value').textContent = '0';
 
-  // ── PING ──────────────────────────────────────
-  setStatus('Measuring Ping...');
-  const pingMs = await measurePing();
-  document.getElementById('ping-result').textContent = pingMs;
+  try {
+    setStatus('📡 Measuring Ping...');
+    const pingMs = await measurePing();
+    document.getElementById('ping-result').textContent = pingMs;
 
-  // ── DOWNLOAD ──────────────────────────────────
-  setStatus('Measuring Download Speed...');
-  const dlSpeed = await measureDownload();
-  document.getElementById('download-result').textContent = dlSpeed;
+    setStatus('⬇ Measuring Download...');
+    const dlSpeed = await measureDownload();
+    document.getElementById('download-result').textContent = dlSpeed;
 
-  // ── UPLOAD ────────────────────────────────────
-  setStatus('Measuring Upload Speed...');
-  const ulSpeed = await measureUpload();
-  document.getElementById('upload-result').textContent = ulSpeed;
+    setStatus('⬆ Measuring Upload...');
+    const ulSpeed = await measureUpload();
+    document.getElementById('upload-result').textContent = ulSpeed;
 
-  setStatus('✅ Test Complete!');
-  document.getElementById('speed-value').textContent = dlSpeed;
+    setStatus('✅ Test Complete!');
+    arc.classList.remove('testing');
+
+  } catch (err) {
+    setStatus('❌ Error: ' + err.message);
+    arc.classList.remove('testing');
+  }
+
   btn.disabled = false;
-  btn.textContent = 'RUN AGAIN';
+  btn.textContent = 'AGAIN';
 }
 
 async function measurePing() {
@@ -39,18 +54,19 @@ async function measurePing() {
 }
 
 async function measureDownload() {
-  const SIZE = 10 * 1024 * 1024; // 10 MB
+  const SIZE = 10 * 1024 * 1024;
   const t0 = performance.now();
   const res = await fetch('/download?r=' + Math.random());
-  await res.arrayBuffer(); // wait for full download
-  const elapsed = (performance.now() - t0) / 1000; // seconds
+  await res.arrayBuffer();
+  const elapsed = (performance.now() - t0) / 1000;
   const speedMbps = ((SIZE * 8) / elapsed / 1_000_000).toFixed(2);
   animateGauge(speedMbps);
+  setArc(Math.min((parseFloat(speedMbps) / 100) * 100, 100));
   return speedMbps;
 }
 
 async function measureUpload() {
-  const SIZE = 5 * 1024 * 1024; // 5 MB
+  const SIZE = 5 * 1024 * 1024;
   const data = new Uint8Array(SIZE);
   const t0 = performance.now();
   await fetch('/upload', {
@@ -70,6 +86,7 @@ function animateGauge(value) {
   const interval = setInterval(() => {
     current = Math.min(current + step, target);
     el.textContent = current.toFixed(1);
+    setArc(Math.min((current / 100) * 100, 100));
     if (current >= target) clearInterval(interval);
   }, 30);
 }
