@@ -200,8 +200,8 @@ body {
 }
 
 .ad-slot.vertical {
-  width: 160px;
-  min-height: 600px;
+  width: 120px;
+  min-height: 300px;
   background: #161b22;
   border: 1px dashed #30363d;
   border-radius: 8px;
@@ -211,6 +211,13 @@ body {
   color: #444;
   font-size: 0.85rem;
   writing-mode: horizontal-tb;
+}
+
+.ad-sidebar {
+  width: 120px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
 }
 
 /* Hide sidebar ads on small screens */
