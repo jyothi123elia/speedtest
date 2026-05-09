@@ -94,3 +94,18 @@ function animateGauge(value) {
 function setStatus(text) {
   document.getElementById('status-text').textContent = text;
 }
+// Buddha rotating quotes
+const buddhaQuotes = [
+  '"Good things take time. Your success is loading..."',
+  '"Be patient. Everything comes to you at the right time."',
+  '"Peace comes from within. Do not seek it without."',
+  '"The secret of health is not to mourn the past."',
+  '"Three things cannot hide: the sun, the moon, and the truth."',
+  '"Happiness never decreases by being shared."'
+];
+
+let quoteIndex = 0;
+setInterval(() => {
+  quoteIndex = (quoteIndex + 1) % buddhaQuotes.length;
+  document.getElementById('buddha-quote').textContent = buddhaQuotes[quoteIndex];
+}, 6000);

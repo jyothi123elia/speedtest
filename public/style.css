@@ -98,3 +98,77 @@ body {
   cursor: not-allowed;
   transform: none;
 }
+/* BUDDHA SECTION */
+.buddha-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 10px auto 20px;
+  padding: 20px 30px;
+  max-width: 700px;
+  background: linear-gradient(135deg, #0d1f2d, #162030);
+  border: 1px solid #1e3a4a;
+  border-radius: 20px;
+  flex-wrap: wrap;
+}
+
+.buddha-animation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.buddha-glow {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #00d4ff22, transparent 70%);
+  animation: buddha-pulse 2.5s ease-in-out infinite;
+}
+
+.buddha-emoji {
+  font-size: 3rem;
+  animation: buddha-float 3s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes buddha-float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes buddha-pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.5; }
+  50%       { transform: scale(1.4); opacity: 1;   }
+}
+
+.buddha-quote {
+  text-align: left;
+  max-width: 400px;
+}
+
+.quote-text {
+  color: #00d4ff;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  animation: fade-quote 6s ease-in-out infinite;
+}
+
+.quote-author {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
+@keyframes fade-quote {
+  0%, 100% { opacity: 1; }
+  45%, 55% { opacity: 0; }
+}
