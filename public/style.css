@@ -181,3 +181,41 @@ body {
   70%, 85%  { opacity: 0; }
   100%      { opacity: 1; }
 }
+/* LEFT & RIGHT ADS */
+.page-layout {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ad-sidebar {
+  width: 160px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+}
+
+.ad-slot.vertical {
+  width: 160px;
+  min-height: 600px;
+  background: #161b22;
+  border: 1px dashed #30363d;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-size: 0.85rem;
+  writing-mode: horizontal-tb;
+}
+
+/* Hide sidebar ads on small screens */
+@media (max-width: 900px) {
+  .ad-sidebar {
+    display: none;
+  }
+}
