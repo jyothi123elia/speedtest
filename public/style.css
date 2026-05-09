@@ -168,7 +168,16 @@ body {
   margin-top: 6px;
 }
 
+.quote-text {
+  color: #00d4ff;
+  font-size: 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  animation: fade-quote 9s ease-in-out infinite;
+}
+
 @keyframes fade-quote {
-  0%, 100% { opacity: 1; }
-  45%, 55% { opacity: 0; }
+  0%        { opacity: 1; }
+  70%, 85%  { opacity: 0; }
+  100%      { opacity: 1; }
 }

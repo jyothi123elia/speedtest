@@ -108,4 +108,4 @@ let quoteIndex = 0;
 setInterval(() => {
   quoteIndex = (quoteIndex + 1) % buddhaQuotes.length;
   document.getElementById('buddha-quote').textContent = buddhaQuotes[quoteIndex];
-}, 6000);
+}, 9000);
