@@ -5,70 +5,37 @@ body {
   background: #0d1117;
   color: #ffffff;
   text-align: center;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-header { padding: 10px 20px 5px; }
-header h1 { font-size: 1.8rem; color: #00d4ff; }
-header p  { color: #aaaaaa; margin-top: 3px; font-size: 0.85rem; }
+header { padding: 8px; }
+header h1 { font-size: 1.5rem; color: #00d4ff; }
+header p { color: #aaa; font-size: 0.75rem; }
 
-.page-layout {
+main {
+  flex: 1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
+  padding: 0px;
   gap: 0px;
-  width: 100%;
-  margin: 0 auto;
 }
 
-.ad-sidebar {
-  width: 130px;
-  flex-shrink: 0;
-  padding-top: 10px;
-}
-
-.ad-slot.vertical {
-  width: 120px;
-  min-height: 320px;
-  max-height: 320px;
-  background: #161b22;
-  border: 1px dashed #30363d;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #444;
-  font-size: 0.85rem;
-  margin: 0 auto;
-}
-
-main { padding: 5px 20px; flex: 1; max-width: 700px; }
-
-.ad-slot {
-  margin: 8px auto;
-  max-width: 728px;
-  min-height: 60px;
-  background: #161b22;
-  border: 1px dashed #333;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #444;
-  font-size: 0.85rem;
-}
-
-/* SMALLER GAUGE */
+/* GAUGE */
 .gauge-container {
-  margin: 5px auto;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
 }
 
 .gauge-wrapper {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,92 +81,95 @@ main { padding: 5px 20px; flex: 1; max-width: 700px; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1px;
+  gap: 0px;
 }
 
 #speed-value {
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #00d4ff;
   line-height: 1;
 }
 
-.unit { color: #aaa; font-size: 0.8rem; }
+.unit { color: #aaa; font-size: 0.75rem; }
 
 #status-text {
-  color: #aaaaaa;
-  font-size: 0.7rem;
+  color: #aaa;
+  font-size: 0.65rem;
   margin-top: 2px;
 }
 
 #start-btn {
-  margin-top: 6px;
-  padding: 7px 18px;
+  margin-top: 5px;
+  padding: 6px 16px;
   background: #00d4ff;
-  color: #000000;
+  color: #000;
   border: none;
   border-radius: 50px;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.2s;
 }
 
-#start-btn:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 20px #00d4ff88;
-}
+#start-btn:hover { transform: scale(1.08); }
+#start-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-#start-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* SMALLER RESULTS */
+/* RESULTS */
 .results-grid {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 8px auto;
+  gap: 8px;
+  margin: 6px auto;
 }
 
 .result-card {
   background: #161b22;
   border: 1px solid #30363d;
   border-radius: 10px;
-  padding: 10px 16px;
+  padding: 6px 14px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  min-width: 100px;
+  gap: 2px;
+  min-width: 90px;
 }
 
-.label { color: #aaaaaa; font-size: 0.75rem; }
-.value { font-size: 1.4rem; font-weight: bold; color: #00d4ff; }
+.label { color: #aaa; font-size: 0.7rem; }
+.value { font-size: 1.2rem; font-weight: bold; color: #00d4ff; }
+.unit  { color: #aaa; font-size: 0.7rem; }
 
-footer {
-  padding: 8px;
-  color: #555;
+/* AD SLOTS - very small */
+.ad-slot {
+  margin: 4px auto;
+  width: 90%;
+  max-width: 500px;
+  min-height: 40px;
+  background: #161b22;
+  border: 1px dashed #333;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
   font-size: 0.75rem;
 }
 
-footer a { color: #00d4ff; text-decoration: none; }
+/* HIDE SIDE ADS */
+.ad-sidebar { display: none; }
 
-/* SMALLER BUDDHA */
+/* BUDDHA - compact */
 .buddha-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin: 8px auto 10px;
-  padding: 12px 20px;
-  max-width: 600px;
+  gap: 12px;
+  margin: 4px auto;
+  padding: 8px 16px;
+  width: 90%;
+  max-width: 500px;
   background: linear-gradient(135deg, #0d1f2d, #162030);
   border: 1px solid #1e3a4a;
-  border-radius: 16px;
-  flex-wrap: wrap;
+  border-radius: 14px;
 }
 
 .buddha-animation {
@@ -207,22 +177,22 @@ footer a { color: #00d4ff; text-decoration: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 55px;
-  height: 55px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
 }
 
 .buddha-glow {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: radial-gradient(circle, #00d4ff22, transparent 70%);
   animation: buddha-pulse 2.5s ease-in-out infinite;
 }
 
 .buddha-emoji {
-  font-size: 2rem;
+  font-size: 1.6rem;
   animation: buddha-float 3s ease-in-out infinite;
   position: relative;
   z-index: 1;
@@ -230,7 +200,7 @@ footer a { color: #00d4ff; text-decoration: none; }
 
 @keyframes buddha-float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-6px); }
+  50%       { transform: translateY(-5px); }
 }
 
 @keyframes buddha-pulse {
@@ -238,20 +208,20 @@ footer a { color: #00d4ff; text-decoration: none; }
   50%       { transform: scale(1.4); opacity: 1;   }
 }
 
-.buddha-quote { text-align: left; max-width: 380px; }
+.buddha-quote { text-align: left; }
 
 .quote-text {
   color: #00d4ff;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.4;
   animation: fade-quote 9s ease-in-out infinite;
 }
 
 .quote-author {
   color: #aaa;
-  font-size: 0.75rem;
-  margin-top: 4px;
+  font-size: 0.7rem;
+  margin-top: 3px;
 }
 
 @keyframes fade-quote {
@@ -260,6 +230,10 @@ footer a { color: #00d4ff; text-decoration: none; }
   100%      { opacity: 1; }
 }
 
-@media (max-width: 900px) {
-  .ad-sidebar { display: none; }
+footer {
+  padding: 5px;
+  color: #555;
+  font-size: 0.7rem;
 }
+
+footer a { color: #00d4ff; text-decoration: none; }
