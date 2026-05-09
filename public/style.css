@@ -26,41 +26,6 @@ header p  { color: #aaaaaa; margin-top: 6px; }
   font-size: 0.85rem;
 }
 
-.page-layout {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 10px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.ad-sidebar {
-  width: 160px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 20px;
-}
-
-.ad-slot.vertical {
-  width: 160px;
-  min-height: 350px;
-  max-height: 350px;
-  background: #161b22;
-  border: 1px dashed #30363d;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #444;
-  font-size: 0.85rem;
-}
-
-@media (max-width: 900px) {
-  .ad-sidebar { display: none; }
-}
-
 main { padding: 20px; }
 
 .gauge-container {
