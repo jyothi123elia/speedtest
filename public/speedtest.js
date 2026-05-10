@@ -109,3 +109,20 @@ setInterval(() => {
   quoteIndex = (quoteIndex + 1) % buddhaQuotes.length;
   document.getElementById('buddha-quote').textContent = buddhaQuotes[quoteIndex];
 }, 9000);
+// Sticky ad - show after 3 seconds
+setTimeout(() => {
+  const ad = document.getElementById('sticky-ad');
+  if (ad) {
+    ad.style.display = 'flex';
+  }
+}, 3000);
+
+function closeStickyAd() {
+  const ad = document.getElementById('sticky-ad');
+  if (ad) {
+    ad.style.animation = 'slide-down 0.4s ease';
+    ad.style.transform = 'translateY(100%)';
+    ad.style.transition = 'transform 0.4s ease';
+    setTimeout(() => ad.style.display = 'none', 400);
+  }
+}
